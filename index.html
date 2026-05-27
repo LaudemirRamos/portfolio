@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio Musical — Maestro & Arranjador</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & VARIABLES ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #0f0d0a;
+  --ink-soft: #2a2420;
+  --gold: #c8973a;
+  --gold-light: #e2b96a;
+  --gold-pale: #f5e9d0;
+  --cream: #f8f4ee;
+  --warm: #ede5d8;
+  --warm-dark: #d4c9b8;
+  --muted: #7a6e62;
+  --muted-light: #a8998c;
+  --red-dark: #7a2828;
+  --white: #ffffff;
+  --shadow: 0 8px 40px rgba(15,13,10,0.12);
+  --shadow-sm: 0 2px 12px rgba(15,13,10,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(15,13,10,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200,151,58,0.2);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 6px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: 'Jost', sans-serif;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+  background: rgba(200,151,58,0.1);
+}
+
+/* ===== PAGES ===== */
+.page {
+  display: none;
+  min-height: 100vh;
+  padding-top: 60px;
+  animation: fadeIn 0.4s ease;
+}
+
+.page.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== PAGE 1: HOME ===== */
+#home .hero {
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  padding: 48px 48px 52px;
+}
+
+#home .hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 34px, rgba(200,151,58,0.05) 34px, rgba(200,151,58,0.05) 35px),
+    repeating-linear-gradient(90deg, transparent, transparent 34px, rgba(200,151,58,0.05) 34px, rgba(200,151,58,0.05) 35px);
+}
+
+#home .hero-glow {
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(200,151,58,0.12) 0%, transparent 70%);
+  top: -100px; right: -100px;
+  border-radius: 50%;
+}
+
+#home .hero-content { position: relative; z-index: 2; max-width: 600px; }
+
+#home .hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.8;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+#home .hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 6vw, 64px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+#home .hero-name em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+#home .hero-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.role-badge {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.role-badge.primary {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.role-badge.secondary {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+#home .hero-line {
+  width: 80px; height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+/* Profile strip */
+#home .profile-strip {
+  background: var(--white);
+  border-bottom: 1px solid var(--warm);
+  padding: 28px 48px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+#home .avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--red-dark));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(200,151,58,0.3);
+}
+
+#home .profile-bio {
+  flex: 1;
+}
+
+#home .profile-bio blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  border-left: 3px solid var(--gold);
+  padding-left: 18px;
+}
+
+/* Stats */
+#home .stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--warm);
+  border-top: 1px solid var(--warm);
+  border-bottom: 1px solid var(--warm);
+}
+
+#home .stat-item {
+  background: var(--ink);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+#home .stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+#home .stat-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+/* Quick links */
+#home .quick-section {
+  padding: 40px 48px;
+}
+
+#home .section-heading {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#home .section-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--warm-dark);
+}
+
+#home .quick-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.ql-card {
+  background: var(--white);
+  border: 1px solid var(--warm);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ql-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 6px 24px rgba(200,151,58,0.15);
+  transform: translateY(-2px);
+}
+
+.ql-icon {
+  width: 48px; height: 48px;
+  background: var(--gold-pale);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.ql-text .ql-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.ql-text .ql-sub {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ===== PAGE 2: SOBRE MIM ===== */
+#sobre .sobre-hero {
+  background: linear-gradient(135deg, var(--ink) 0%, #2a1f14 100%);
+  padding: 60px 48px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+#sobre .sobre-hero::after {
+  content: '🎺';
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 120px;
+  opacity: 0.06;
+  line-height: 1;
+}
+
+#sobre .sobre-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+#sobre .sobre-hero p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+#sobre .sobre-body {
+  padding: 40px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+#sobre .sobre-left { }
+#sobre .sobre-right { }
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title::before {
+  content: '';
+  width: 4px;
+  height: 22px;
+  background: var(--gold);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.prose {
+  font-size: 14px;
+  line-height: 1.85;
+  color: #4a3f35;
+  margin-bottom: 20px;
+}
+
+/* Timeline */
+.timeline { position: relative; padding-left: 24px; margin-bottom: 28px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 8px; bottom: 8px;
+  width: 1.5px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+.t-item { position: relative; margin-bottom: 24px; }
+.t-item::before {
+  content: '';
+  position: absolute;
+  left: -19px;
+  top: 6px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--cream);
+  box-shadow: 0 0 0 3px rgba(200,151,58,0.2);
+}
+
+.t-date {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.t-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.t-sub {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Role cards */
+.role-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.role-card {
+  background: var(--white);
+  border: 1px solid var(--warm);
+  border-radius: 12px;
+  padding: 18px;
+  transition: all 0.2s;
+}
+
+.role-card:hover {
+  border-color: var(--gold);
+  box-shadow: var(--shadow-sm);
+}
+
+.role-card .rc-icon { font-size: 26px; margin-bottom: 8px; }
+.role-card .rc-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.role-card .rc-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+/* Ensemble tags */
+.ens-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.ens-tag {
+  background: var(--ink);
+  color: var(--gold-light);
+  font-size: 11px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* ===== PAGE 3: PROJETOS ===== */
+#projetos .proj-header {
+  background: var(--ink);
+  padding: 60px 48px 40px;
+}
+
+#projetos .proj-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+#projetos .proj-header p {
+  color: rgba(255,255,255,0.45);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+#projetos .filters-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--warm);
+  padding: 16px 48px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  position: sticky;
+  top: 60px;
+  z-index: 100;
+}
+
+.filter-btn {
+  font-size: 11px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--warm-dark);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: var(--ink);
+  color: var(--gold);
+  border-color: transparent;
+}
+
+#projetos .proj-grid {
+  padding: 40px 48px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.proj-card {
+  background: var(--white);
+  border: 1px solid var(--warm);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.proj-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 8px 32px rgba(200,151,58,0.15);
+  transform: translateY(-3px);
+}
+
+.proj-card-top {
+  padding: 20px 20px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.proj-type-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.icon-arr { background: #fdf3e3; }
+.icon-reg { background: #fce8e8; }
+.icon-per { background: #e8f4fd; }
+.icon-sol { background: #eaf5e8; }
+
+.proj-date-badge {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  background: var(--warm);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.proj-card-body { padding: 14px 20px 20px; }
+.proj-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.proj-card-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.proj-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.pbadge {
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+.pbadge-arr { background: #fdf3e3; color: #9a6e20; }
+.pbadge-reg { background: #fce8e8; color: #8b2e2e; }
+.pbadge-per { background: #e8f4fd; color: #1a5f8a; }
+.pbadge-sol { background: #eaf5e8; color: #2d6b2d; }
+
+.proj-links { display: flex; gap: 8px; }
+.plink {
+  font-size: 10px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: var(--warm);
+  color: var(--muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: none;
+  font-family: 'Jost', sans-serif;
+}
+.plink:hover { background: var(--gold); color: var(--ink); }
+
+/* ===== PAGE 4: HABILIDADES ===== */
+#habilidades .hab-header {
+  background: var(--ink);
+  padding: 60px 48px 48px;
+}
+
+#habilidades .hab-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+#habilidades .hab-header p {
+  color: rgba(255,255,255,0.45);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+#habilidades .hab-body {
+  padding: 40px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.hab-section { margin-bottom: 28px; }
+
+/* Skill bars */
+.skill-item { margin-bottom: 16px; }
+.skill-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+.skill-name { font-size: 13px; font-weight: 500; color: var(--ink); }
+.skill-lvl { font-size: 10px; color: var(--gold); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+.bar-bg {
+  height: 4px;
+  background: var(--warm);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transition: width 0.8s ease;
+}
+
+/* Tag clouds */
+.tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.hab-tag {
+  background: var(--white);
+  border: 1px solid var(--warm);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+.hab-tag:hover { border-color: var(--gold); background: var(--gold-pale); }
+.hab-tag-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+/* Software cards */
+.soft-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.soft-card {
+  background: var(--white);
+  border: 1px solid var(--warm);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+}
+.soft-icon { font-size: 24px; margin-bottom: 6px; }
+.soft-name { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.soft-lvl {
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ===== PAGE 5: CONTATO ===== */
+#contato .cont-hero {
+  background: var(--ink);
+  padding: 60px 48px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+#contato .cont-hero::before {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(200,151,58,0.08), transparent 70%);
+  bottom: -100px; right: -50px;
+  border-radius: 50%;
+}
+
+#contato .cont-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+  position: relative;
+}
+
+#contato .cont-hero p {
+  color: rgba(255,255,255,0.45);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+#contato .cont-body {
+  padding: 40px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* CV Download */
+.cv-download {
+  background: var(--ink);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.cv-download::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(200,151,58,0.1), transparent);
+}
+
+.cv-icon {
+  width: 60px; height: 60px;
+  background: rgba(200,151,58,0.15);
+  border: 1px solid rgba(200,151,58,0.3);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+  position: relative;
+}
+.cv-info { flex: 1; position: relative; }
+.cv-title { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+.cv-sub { font-size: 11px; color: rgba(255,255,255,0.4); }
+.cv-btn {
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+.cv-btn:hover { background: var(--gold-light); transform: scale(1.03); }
+
+/* Contact items */
+.contact-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.contact-item {
+  background: var(--white);
+  border: 1px solid var(--warm);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.contact-item:hover { border-color: var(--gold); box-shadow: var(--shadow-sm); }
+.contact-emoji { font-size: 22px; width: 40px; text-align: center; }
+.contact-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 2px; }
+.contact-value { font-size: 13px; font-weight: 500; color: var(--ink); }
+
+/* Social grid */
+.social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.social-card {
+  background: var(--white);
+  border: 1px solid var(--warm);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.social-card:hover {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.social-icon { font-size: 28px; margin-bottom: 8px; }
+.social-name { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+.social-handle { font-size: 11px; color: var(--muted); }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--ink);
+  padding: 28px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(200,151,58,0.2);
+}
+footer .f-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: var(--gold);
+}
+footer .f-copy {
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ===== DIVIDER ===== */
+.divider { height: 1px; background: var(--warm); margin: 24px 0; }
+
+/* ===== UTILITIES ===== */
+.mb-24 { margin-bottom: 24px; }
+.full-width { grid-column: 1 / -1; }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">🎺 Portfólio Musical</div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" class="active" id="nav-home">Início</a></li>
+    <li><a onclick="showPage('sobre')" id="nav-sobre">Sobre Mim</a></li>
+    <li><a onclick="showPage('projetos')" id="nav-projetos">Projetos</a></li>
+    <li><a onclick="showPage('habilidades')" id="nav-habilidades">Habilidades</a></li>
+    <li><a onclick="showPage('contato')" id="nav-contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- ============================= -->
+<!-- PAGE 1: HOME                  -->
+<!-- ============================= -->
+<div id="home" class="page active">
+  <div class="hero">
+    <div class="hero-pattern"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Portfólio Musical Profissional</div>
+      <div class="hero-name">Maestro,<br><em>Arranjador</em><br>& Trombonista</div>
+      <div class="hero-roles">
+        <span class="role-badge primary">Maestro</span>
+        <span class="role-badge secondary">Arranjador Musical</span>
+        <span class="role-badge secondary">Trombonista</span>
+        <span class="role-badge secondary">Licenciado UFCG</span>
+        <span class="role-badge secondary">Especialista FAVENI</span>
+      </div>
+      <div class="hero-line"></div>
+    </div>
+  </div>
+
+  <div class="profile-strip">
+    <div class="avatar">🎺</div>
+    <blockquote class="profile-bio">
+      <blockquote>"Músico com formação acadêmica sólida e anos de experiência nos palcos. Atuo como Maestro, Arranjador e Trombonista em bandas, bigband, orquestra e como solista — unindo rigor técnico e expressividade artística em cada projeto."</blockquote>
+    </blockquote>
+  </div>
+
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-num">+15</div>
+      <div class="stat-label">Arranjos Originais</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Títulos Acadêmicos</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">+10</div>
+      <div class="stat-label">Anos de Palco</div>
+    </div>
+  </div>
+
+  <div class="quick-section">
+    <div class="section-heading">Explore o portfólio</div>
+    <div class="quick-grid">
+      <div class="ql-card" onclick="showPage('sobre')">
+        <div class="ql-icon">🎓</div>
+        <div class="ql-text">
+          <div class="ql-title">Sobre Mim</div>
+          <div class="ql-sub">Trajetória, formação acadêmica e papéis artísticos</div>
+        </div>
+      </div>
+      <div class="ql-card" onclick="showPage('projetos')">
+        <div class="ql-icon">🎼</div>
+        <div class="ql-text">
+          <div class="ql-title">Projetos</div>
+          <div class="ql-sub">Arranjos, concertos, regências e performances</div>
+        </div>
+      </div>
+      <div class="ql-card" onclick="showPage('habilidades')">
+        <div class="ql-icon">🎵</div>
+        <div class="ql-text">
+          <div class="ql-title">Habilidades</div>
+          <div class="ql-sub">Skills musicais, técnicas e softwares</div>
+        </div>
+      </div>
+      <div class="ql-card" onclick="showPage('contato')">
+        <div class="ql-icon">📩</div>
+        <div class="ql-text">
+          <div class="ql-title">Contato & CV</div>
+          <div class="ql-sub">Currículo para download e redes sociais</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="f-logo">🎺 Portfólio Musical</div>
+    <div class="f-copy">Maestro · Arranjador · Trombonista — Paraíba, Brasil</div>
+  </footer>
+</div>
+
+<!-- ============================= -->
+<!-- PAGE 2: SOBRE MIM             -->
+<!-- ============================= -->
+<div id="sobre" class="page">
+  <div class="sobre-hero">
+    <h1>Sobre Mim</h1>
+    <p>Trajetória · Formação · Papéis Artísticos</p>
+  </div>
+
+  <div class="sobre-body">
+    <div class="sobre-left">
+      <div class="section-title">Quem sou</div>
+      <p class="prose">
+        Maestro, arranjador musical e trombonista com sólida formação acadêmica e anos de experiência nos palcos do Brasil. Minha trajetória musical combina o rigor da teoria com a expressividade da performance ao vivo.
+      </p>
+      <p class="prose">
+        Licenciado em Música pela <strong>UFCG</strong> e especialista em Artes e Música pela <strong>FAVENI</strong>, atuo profissionalmente como regente, arranjador e instrumentista em contextos que vão do erudito ao popular, do jazz ao repertório brasileiro.
+      </p>
+      <p class="prose">
+        Acredito que a música é uma linguagem universal, e meu trabalho é facilitar essa comunicação — entre compositor, intérprete e público — com sensibilidade, técnica e comprometimento artístico.
+      </p>
+
+      <div class="section-title" style="margin-top:32px">Formação Acadêmica</div>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-date">Especialização</div>
+          <div class="t-title">Especialista em Artes e Música</div>
+          <div class="t-sub">FAVENI — Faculdade Venda Nova do Imigrante<br>Foco em pedagogia musical e práticas de conjunto</div>
+        </div>
+        <div class="t-item">
+          <div class="t-date">Graduação</div>
+          <div class="t-title">Licenciado em Música</div>
+          <div class="t-sub">UFCG — Universidade Federal de Campina Grande<br>Habilitação em regência e instrumentos de sopro</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sobre-right">
+      <div class="section-title">Papéis Artísticos</div>
+      <div class="role-cards">
+        <div class="role-card">
+          <div class="rc-icon">🎩</div>
+          <div class="rc-title">Maestro</div>
+          <div class="rc-desc">Regência de bandas sinfônicas, orquestras e conjuntos de câmara</div>
+        </div>
+        <div class="role-card">
+          <div class="rc-icon">🎼</div>
+          <div class="rc-title">Arranjador</div>
+          <div class="rc-desc">Criação de arranjos originais para bigband, orquestra e formações diversas</div>
+        </div>
+        <div class="role-card">
+          <div class="rc-icon">🎺</div>
+          <div class="rc-title">Trombonista</div>
+          <div class="rc-desc">Solista e integrante de grandes conjuntos musicais</div>
+        </div>
+        <div class="role-card">
+          <div class="rc-icon">📚</div>
+          <div class="rc-title">Educador</div>
+          <div class="rc-desc">Licenciado com foco em formação musical e docência</div>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top:28px">Onde Atuo</div>
+      <div class="ens-tags">
+        <span class="ens-tag">🎷 BigBand</span>
+        <span class="ens-tag">🎻 Orquestra</span>
+        <span class="ens-tag">🥁 Banda Sinfônica</span>
+        <span class="ens-tag">🎺 Solista</span>
+        <span class="ens-tag">🎵 Música de Câmara</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="f-logo">🎺 Portfólio Musical</div>
+    <div class="f-copy">Maestro · Arranjador · Trombonista — Paraíba, Brasil</div>
+  </footer>
+</div>
+
+<!-- ============================= -->
+<!-- PAGE 3: PROJETOS              -->
+<!-- ============================= -->
+<div id="projetos" class="page">
+  <div class="proj-header">
+    <h1>Projetos</h1>
+    <p>Arranjos · Regência · Performances · Solos</p>
+  </div>
+
+  <div class="filters-bar">
+    <button class="filter-btn active" onclick="filterProj(this,'todos')">Todos</button>
+    <button class="filter-btn" onclick="filterProj(this,'arranjo')">Arranjos</button>
+    <button class="filter-btn" onclick="filterProj(this,'regencia')">Regência</button>
+    <button class="filter-btn" onclick="filterProj(this,'performance')">Performance</button>
+    <button class="filter-btn" onclick="filterProj(this,'solo')">Solo</button>
+  </div>
+
+  <div class="proj-grid" id="proj-grid">
+
+    <div class="proj-card" data-cat="arranjo">
+      <div class="proj-card-top">
+        <div class="proj-type-icon icon-arr">🎼</div>
+        <span class="proj-date-badge">Jun 2024</span>
+      </div>
+      <div class="proj-card-body">
+        <div class="proj-card-title">Aquarela do Brasil — Arranjo para BigBand</div>
+        <div class="proj-badges">
+          <span class="pbadge pbadge-arr">Arranjo</span>
+          <span class="pbadge pbadge-per">BigBand</span>
+        </div>
+        <div class="proj-card-desc">Arranjo original para formação de bigband com 17 músicos. Inclui seção de brass em 4 vozes, solo de trombone e shout chorus final impactante.</div>
+        <div class="proj-links">
+          <button class="plink">📄 Partitura</button>
+          <button class="plink">▶ Vídeo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="regencia">
+      <div class="proj-card-top">
+        <div class="proj-type-icon icon-reg">🎩</div>
+        <span class="proj-date-badge">Dez 2023</span>
+      </div>
+      <div class="proj-card-body">
+        <div class="proj-card-title">Concerto de Natal — Regência Orquestral</div>
+        <div class="proj-badges">
+          <span class="pbadge pbadge-reg">Regência</span>
+          <span class="pbadge pbadge-per">Orquestra</span>
+        </div>
+        <div class="proj-card-desc">Regência do concerto anual com repertório de música sacra e popular brasileira para orquestra sinfônica de câmara com 35 músicos.</div>
+        <div class="proj-links">
+          <button class="plink">📸 Fotos</button>
+          <button class="plink">▶ Vídeo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="solo performance">
+      <div class="proj-card-top">
+        <div class="proj-type-icon icon-sol">🎺</div>
+        <span class="proj-date-badge">Out 2023</span>
+      </div>
+      <div class="proj-card-body">
+        <div class="proj-card-title">Recital de Trombone — Performance Solo</div>
+        <div class="proj-badges">
+          <span class="pbadge pbadge-sol">Solo</span>
+          <span class="pbadge pbadge-per">Performance</span>
+        </div>
+        <div class="proj-card-desc">Recital solo com repertório de música erudita e jazz. Inclui obra de composição própria e três transcrições originais para trombone.</div>
+        <div class="proj-links">
+          <button class="plink">▶ Áudio</button>
+          <button class="plink">📄 Programa</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="arranjo">
+      <div class="proj-card-top">
+        <div class="proj-type-icon icon-arr">🎼</div>
+        <span class="proj-date-badge">Mar 2023</span>
+      </div>
+      <div class="proj-card-body">
+        <div class="proj-card-title">Asa Branca — Arranjo para Banda Sinfônica</div>
+        <div class="proj-badges">
+          <span class="pbadge pbadge-arr">Arranjo</span>
+          <span class="pbadge pbadge-per">Banda</span>
+        </div>
+        <div class="proj-card-desc">Releitura de Luiz Gonzaga para banda sinfônica com 40 instrumentistas. Estreado no Festival de Bandas do Nordeste. Trabalho premiado.</div>
+        <div class="proj-links">
+          <button class="plink">📄 Partitura</button>
+          <button class="plink">▶ Vídeo</button>
+          <button class="plink">🏆 Premiado</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="regencia performance">
+      <div class="proj-card-top">
+        <div class="proj-type-icon icon-reg">🎩</div>
+        <span class="proj-date-badge">Jul 2022</span>
+      </div>
+      <div class="proj-card-body">
+        <div class="proj-card-title">Festival Jazz do Nordeste — Regência BigBand</div>
+        <div class="proj-badges">
+          <span class="pbadge pbadge-reg">Regência</span>
+          <span class="pbadge pbadge-per">BigBand</span>
+        </div>
+        <div class="proj-card-desc">Regência de bigband em festival regional com repertório de jazz americano e brasileiro. Apresentação para plateia de mais de 500 pessoas.</div>
+        <div class="proj-links">
+          <button class="plink">📸 Fotos</button>
+          <button class="plink">▶ Vídeo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="arranjo solo">
+      <div class="proj-card-top">
+        <div class="proj-type-icon icon-arr">🎼</div>
+        <span class="proj-date-badge">Nov 2021</span>
+      </div>
+      <div class="proj-card-body">
+        <div class="proj-card-title">Brasileirinho — Transcrição e Arranjo Solo</div>
+        <div class="proj-badges">
+          <span class="pbadge pbadge-arr">Arranjo</span>
+          <span class="pbadge pbadge-sol">Solo</span>
+        </div>
+        <div class="proj-card-desc">Transcrição e arranjo da obra de Waldir Azevedo para trombone solo com acompanhamento de piano. Publicada e disponível para download.</div>
+        <div class="proj-links">
+          <button class="plink">📄 Partitura</button>
+          <button class="plink">▶ Áudio</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="f-logo">🎺 Portfólio Musical</div>
+    <div class="f-copy">Maestro · Arranjador · Trombonista — Paraíba, Brasil</div>
+  </footer>
+</div>
+
+<!-- ============================= -->
+<!-- PAGE 4: HABILIDADES           -->
+<!-- ============================= -->
+<div id="habilidades" class="page">
+  <div class="hab-header">
+    <h1>Habilidades</h1>
+    <p>Musicais · Técnicas · Acadêmicas · Softwares</p>
+  </div>
+
+  <div class="hab-body">
+    <div>
+      <div class="section-title">Performance Instrumental</div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Trombone</span><span class="skill-lvl">Avançado</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Leitura à primeira vista</span><span class="skill-lvl">Avançado</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Improvisação (Jazz)</span><span class="skill-lvl">Intermediário</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Técnica estendida (trombone)</span><span class="skill-lvl">Intermediário</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:65%"></div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-title">Regência</div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Regência de banda sinfônica</span><span class="skill-lvl">Avançado</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Regência de bigband / jazz</span><span class="skill-lvl">Avançado</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Regência orquestral</span><span class="skill-lvl">Intermediário</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-title">Softwares</div>
+      <div class="soft-grid">
+        <div class="soft-card">
+          <div class="soft-icon">🎵</div>
+          <div class="soft-name">Sibelius</div>
+          <div class="soft-lvl">Avançado</div>
+        </div>
+        <div class="soft-card">
+          <div class="soft-icon">🎼</div>
+          <div class="soft-name">MuseScore</div>
+          <div class="soft-lvl">Avançado</div>
+        </div>
+        <div class="soft-card">
+          <div class="soft-icon">🎹</div>
+          <div class="soft-name">Finale</div>
+          <div class="soft-lvl">Intermediário</div>
+        </div>
+        <div class="soft-card">
+          <div class="soft-icon">🎧</div>
+          <div class="soft-name">DAW (áudio)</div>
+          <div class="soft-lvl">Básico</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-title">Teoria e Composição</div>
+      <div class="tag-cloud">
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Harmonia Tonal</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Harmonia Jazz</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Contraponto</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Análise Musical</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Forma e Estrutura</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Ear Training</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Ditado Musical</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-title">Arranjo</div>
+      <div class="tag-cloud">
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Arranjo para BigBand</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Arranjo para Banda</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Arranjo Coral</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Orquestração</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Transcrição</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Voicing de Brass</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Escrita Idiomática</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-title">Repertórios & Estilos</div>
+      <div class="tag-cloud">
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Música Erudita</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Jazz</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Música Brasileira</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Música Sacra</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Música Nordestina</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Música Popular</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-title">Docência</div>
+      <div class="tag-cloud">
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Licenciatura em Música</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Pedagogia Musical</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Musicalização</span>
+        <span class="hab-tag"><span class="hab-tag-dot"></span>Ensino de Trombone</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="f-logo">🎺 Portfólio Musical</div>
+    <div class="f-copy">Maestro · Arranjador · Trombonista — Paraíba, Brasil</div>
+  </footer>
+</div>
+
+<!-- ============================= -->
+<!-- PAGE 5: CONTATO               -->
+<!-- ============================= -->
+<div id="contato" class="page">
+  <div class="cont-hero">
+    <h1>Contato & CV</h1>
+    <p>Currículo · Redes Sociais · Mensagem Direta</p>
+  </div>
+
+  <div class="cont-body">
+    <div>
+      <div class="section-title">Currículo Vitae</div>
+      <div class="cv-download">
+        <div class="cv-icon">📄</div>
+        <div class="cv-info">
+          <div class="cv-title">Currículo — 2024</div>
+          <div class="cv-sub">PDF · Atualizado · Inclui formação e experiências</div>
+        </div>
+        <button class="cv-btn">⬇ Baixar PDF</button>
+      </div>
+
+      <div class="section-title">Contato Direto</div>
+      <div class="contact-list">
+        <div class="contact-item">
+          <div class="contact-emoji">✉️</div>
+          <div>
+            <div class="contact-label">E-mail</div>
+            <div class="contact-value">seuemail@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-emoji">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">(83) 9 0000-0000</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-emoji">📍</div>
+          <div>
+            <div class="contact-label">Localização</div>
+            <div class="contact-value">Paraíba, Brasil</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-title">Redes Sociais</div>
+      <div class="social-grid">
+        <div class="social-card">
+          <div class="social-icon">💼</div>
+          <div class="social-name">LinkedIn</div>
+          <div class="social-handle">/in/seuperfil</div>
+        </div>
+        <div class="social-card">
+          <div class="social-icon">▶️</div>
+          <div class="social-name">YouTube</div>
+          <div class="social-handle">@seucanal</div>
+        </div>
+        <div class="social-card">
+          <div class="social-icon">📸</div>
+          <div class="social-name">Instagram</div>
+          <div class="social-handle">@seuperfil</div>
+        </div>
+        <div class="social-card">
+          <div class="social-icon">🎵</div>
+          <div class="social-name">SoundCloud</div>
+          <div class="social-handle">/seuperfil</div>
+        </div>
+      </div>
+
+      <div style="margin-top:32px">
+        <div class="section-title">Disponibilidade</div>
+        <div style="background:var(--white);border:1px solid var(--warm);border-radius:12px;padding:20px">
+          <p style="font-size:13px;color:var(--muted);line-height:1.8">
+            Disponível para projetos de <strong style="color:var(--ink)">regência</strong>, <strong style="color:var(--ink)">arranjos musicais</strong>, <strong style="color:var(--ink)">performances como solista</strong> e <strong style="color:var(--ink)">docência</strong>.<br><br>
+            Entre em contato para orçamentos, convites para apresentações ou colaborações artísticas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="f-logo">🎺 Portfólio Musical</div>
+    <div class="f-copy">Maestro · Arranjador · Trombonista — Paraíba, Brasil</div>
+  </footer>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('nav-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function filterProj(btn, cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const cards = document.querySelectorAll('.proj-card');
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-cat') || '';
+    if (cat === 'todos' || cardCat.includes(cat)) {
+      card.style.display = 'block';
+      card.style.animation = 'fadeIn 0.3s ease';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
